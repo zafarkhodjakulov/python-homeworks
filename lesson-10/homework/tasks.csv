@@ -1,0 +1,6 @@
+The updated code defines custom exceptions, 
+implements the Book, Member, and Library classes, 
+and includes a main function to test the library management system. 
+This setup demonstrates adding books and members, borrowing and returning books, 
+and handling exceptions for invalid operations. 
+Let me know if you'd like further customization or explanations!
