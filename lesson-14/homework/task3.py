@@ -7,9 +7,12 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager
 
 chrome_options = Options()
-chrome_options.add_argument("--headless")  
-chrome_options.add_argument("--disable-gpu")
-chrome_options.add_argument("--no-sandbox")
+# chrome_options.add_argument("--headless")  
+# chrome_options.add_argument("--disable-gpu")
+# chrome_options.add_argument("--no-sandbox")
+chrome_options.add_argument("--disable-popup-blocking")
+chrome_options.add_argument("--window-position=-2500,-200")
+chrome_options.add_experimental_option("detach", True)
 
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
@@ -19,6 +22,9 @@ driver.get(URL)
 time.sleep(3) 
 
 driver.find_element(By.LINK_TEXT, "Laptops").click()
+time.sleep(3)
+
+driver.find_element(By.ID, "next2").click()
 time.sleep(3)
 
 laptops_data = []
@@ -42,7 +48,7 @@ def scrape_page():
             continue 
 
 def scrape_all_pages():
-    """Hamma sahifalardagi ma'lumotlarni yig‘ish"""
+    """Hamma sahifalardagi ma'lumotlarni yig'ish"""
     while True:
         scrape_page()
         try:
